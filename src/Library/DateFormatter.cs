@@ -1,5 +1,4 @@
-﻿namespace TestDateFormat;
-
+﻿
 /// <summary>
 /// Esta clase implementa la funcionalidad de cambiar el formato de una fecha.
 /// </summary>
@@ -16,5 +15,37 @@ public class DateFormatter
     public static string ChangeFormat(string date)
     {
         return date.Substring(6) + "-" + date.Substring(3, 2) + "-" + date.Substring(0, 2);
+    }
+
+    public static Boolean ChequearFormato(string date) 
+    {
+        if (date.Length != 10)
+            {
+                return false;
+            }
+            else
+            {
+                if (date[2] != '/' || date[5] != '/')
+                {
+                    return false;
+                }
+
+                return true;
+            }
+    }
+    public static Boolean ComprobarSiBlanco(string date)
+    {
+            return date = "";
+
+    } 
+    public static string ChangeFormat(string date)
+    {
+        if (ChequearFormato(date) && !ChequeaSiBlanco(date))
+        {
+            return date.Substring(6) + "-" + date.Substring(3, 2) + "-" + date.Substring(0, 2);
+        }
+        {
+            return "";
+        }
     }
 }
